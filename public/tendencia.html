@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>CARMELLA</title>
+    <link rel="stylesheet" href="./src/css/tailwindcss.css">
+</head>
+
+<body class="bg-red-200 bg-cover bg-center" style="background-image: url('./src/img/fondo4.jpg');">
+    <div class="mx-auto">
+        <nav class="bg-red-900 text-white py-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <a href="./inicio.html" class="text-white text-lg font-bold flex items-center">
+                    <img src="./src/img/logo2.png" alt="Logo" class="h-20 w-20 mr-3">
+                </a>
+
+                <!-- Enlaces de Navegación Web-->
+                <ul class="menu flex items-center justify-center gap-5">
+                    <li><a href="./inicio.html" class="text-white font-bold p-2 rounded-full hover:bg-white hover:text-black">Inicio</a></li>
+                    <li><a href="./maquillaje.html" class="text-white font-bold p-2 rounded-full hover:bg-white hover:text-black">Maquillaje</a></li>
+                    <li><a href="./cuidadoca.html" class="text-white font-bold p-2 rounded-full hover:bg-white hover:text-black">Cabello</a></li>
+                    <li><a href="./cuidadop.html" class="text-white font-bold p-2 rounded-full hover:bg-white hover:text-black">Piel</a></li>
+                    <li><a href="./tendencia.html" class="text-white font-bold p-2 rounded-full hover:bg-white hover:text-black">Tendencias</a></li>
+                    <li><a href="./nosotros.html" class=" rounded-full bg-red-200 text-white font-bold px-4 py-3 hover:bg-gray-500">Nosotros</a></li>
+                </ul>
+
+                <!-- Redes Sociales -->
+                <div class="flex space-x-4">
+                    <!-- Cambia las URL de los enlaces según tus redes sociales -->
+                    <a href="https://www.facebook.com/001Carmen.M.S.R/" class="text-white hover:text-gray-400"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/CMSR03185314?t=Ve-_G_h1BBAAhKFJlfVI_A&s=09" class="text-white hover:text-gray-400"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/csaraguro.r/" class="text-white hover:text-gray-400"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Contenido de la Página -->
+    <div class="container mx-auto p-5">
+        <div class="flex flex-col md:flex-row items-center justify-center md:justify-between">
+            <!-- Imagen -->
+            <div class="w-full md:w-1/2 md:mr-5 mb-5 md:mb-0">
+                <img src="./src/img/tendencia.jpg" alt="Maquillaje en Tendencia" class="rounded-lg shadow-lg">
+            </div>
+
+            <!-- Lista de Consejos de Maquillaje -->
+            <div class="w-full md:w-1/2 md:ml-5 mb-5 md:mb-0 bg-white bg-opacity-50 rounded-lg p-5">
+                <h2 class="text-center md:text-left text-3xl font-bold mb-4">Consejos de Maquillaje</h2>
+                <ul class="text-center md:text-left list-disc">
+                    <li class="text-lg mb-2">Limpia e hidrata tu piel antes de aplicar maquillaje.</li>
+                    <li class="text-lg mb-2">Utiliza una base del mismo tono que tu piel para un acabado natural.</li>
+                    <li class="text-lg mb-2">Aplica el rubor en las mejillas para darle color al rostro.</li>
+                    <li class="text-lg mb-2">Resalta tus ojos con sombras que complementen tu tono de piel.</li>
+                    <li class="text-lg mb-2">Finaliza con un labial que resalte tu sonrisa.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Lista de Tendencias de Maquillaje -->
+        <div class="w-full md:w-1/2 md:mx-auto mt-5 bg-white bg-opacity-50 rounded-lg p-5">
+            <h2 class="text-center text-3xl font-bold mb-4">Tendencias de Maquillaje</h2>
+            <ul class="text-center list-disc">
+                <li class="text-lg mb-2">Labios en tonos mate y nude.</li>
+                <li class="text-lg mb-2">Cejas gruesas y bien definidas.</li>
+                <li class="text-lg mb-2">Maquillaje natural resaltando la piel.</li>
+                <li class="text-lg mb-2">Smokey eyes con tonos cálidos.</li>
+                <li class="text-lg mb-2">Delineado de ojos con efectos gráficos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Video -->
+    <div class="container mx-auto p-5">
+        <h2 class="text-center text-3xl font-bold mb-4">Eres tu propia belleza</h2>
+        <div class="card bg-white rounded-2xl overflow-hidden">
+            <div class="cover bg-black">
+                <video src="./src/img/video.mp4" autoplay loop muted class="w-full h-auto"></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-red-900 text-white py-4 text-center">
+        <!-- Iconos de redes sociales en el pie de página -->
+        <div class="flex justify-center space-x-4">
+            <a href="#" class="text-white hover:text-gray-400"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white hover:text-gray-400"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white hover:text-gray-400"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2024 CARMELLA. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Iconos de FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+
+</html>

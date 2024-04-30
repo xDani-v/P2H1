@@ -1,0 +1,346 @@
+/*
+! tailwindcss v3.3.6 | MIT License | https://tailwindcss.com
+*/
+
+/* Universal Box-Sizing */
+*,
+::before,
+::after {
+    box-sizing: border-box; /* 1 */
+    border-width: 0; /* 2 */
+    border-style: solid; /* 2 */
+    border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+    --tw-content: ''; /* Define un contenido vacío para los pseudo-elementos */
+}
+
+/* Normalización de Estilos */
+html {
+    line-height: 1.5; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    -moz-tab-size: 4; /* 3 */
+    -o-tab-size: 4; /* 3 */
+    tab-size: 4; /* 3 */
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+    font-feature-settings: normal; /* 5 */
+    font-variation-settings: normal; /* 6 */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+body {
+    margin: 0; /* 1 */
+    line-height: inherit; /* 2 */
+}
+
+hr {
+    height: 0; /* 1 */
+    color: inherit; /* 2 */
+    border-top-width: 1px; /* 3 */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit; /* Restablece el tamaño de fuente */
+    font-weight: inherit; /* Restablece el peso de la fuente */
+}
+
+a {
+    color: inherit; /* Restablece el color del enlace */
+    text-decoration: inherit; /* Restablece la decoración del texto del enlace */
+}
+
+/* Estilos Específicos */
+b,
+strong {
+    font-weight: bolder; /* Agrega un peso de fuente más fuerte */
+}
+
+/* Estilos Específicos */
+code,
+kbd,
+samp,
+pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+    font-feature-settings: normal; /* 2 */
+    font-variation-settings: normal; /* 3 */
+    font-size: 1em; /* 4 */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+small {
+    font-size: 80%; /* Restablece el tamaño de fuente para elementos pequeños */
+}
+/* Restablecimiento de Estilos Predeterminados */
+sub,
+sup {
+    font-size: 75%; /* Redimensiona el tamaño de fuente para subíndices y superíndices */
+    line-height: 0; /* Restablece la altura de línea */
+    position: relative; /* Establece la posición relativa */
+    vertical-align: baseline; /* Alinea verticalmente con la línea de base */
+}
+
+sub {
+    bottom: -0.25em; /* Ajusta la posición vertical para subíndices */
+}
+
+sup {
+    top: -0.5em; /* Ajusta la posición vertical para superíndices */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+table {
+    text-indent: 0; /* Elimina la sangría del texto en tablas */
+    border-color: inherit; /* Hereda el color de borde */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; /* Hereda la familia de fuentes */
+    font-feature-settings: inherit; /* Hereda las configuraciones de características tipográficas */
+    font-variation-settings: inherit; /* Hereda las configuraciones de variación tipográfica */
+    font-size: 100%; /* Restablece el tamaño de fuente al 100% */
+    font-weight: inherit; /* Hereda el peso de la fuente */
+    line-height: inherit; /* Hereda la altura de línea */
+    color: inherit; /* Hereda el color del texto */
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina el relleno */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+button,
+select {
+    text-transform: none; /* Restablece la transformación de texto */
+}
+
+/* Estilos Específicos */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button; /* Establece la apariencia del botón */
+    background-color: transparent; /* Establece el color de fondo transparente */
+    background-image: none; /* Elimina la imagen de fondo */
+}
+
+/* Estilos Específicos */
+:-moz-focusring {
+    outline: auto; /* Establece un contorno al enfocar en Firefox */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+:-moz-ui-invalid {
+    box-shadow: none; /* Elimina la sombra en elementos inválidos en Firefox */
+}
+
+/* Estilos Específicos */
+progress {
+    vertical-align: baseline; /* Alinea verticalmente con la línea de base */
+}
+
+/* Estilos Específicos */
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    height: auto; /* Establece la altura automática para botones de incremento y decremento en Safari */
+}
+
+/* Estilos Específicos */
+[type='search'] {
+    -webkit-appearance: textfield; /* Establece la apariencia de un campo de texto en Safari */
+    outline-offset: -2px; /* Establece un desplazamiento de contorno negativo */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+::-webkit-search-decoration {
+    -webkit-appearance: none; /* Elimina la decoración de búsqueda predeterminada en Safari */
+}
+
+/* Estilos Específicos */
+::-webkit-file-upload-button {
+    -webkit-appearance: button; /* Establece la apariencia de un botón en Safari */
+    font: inherit; /* Hereda la fuente */
+}
+
+/* Estilos Específicos */
+summary {
+    display: list-item; /* Cambia la visualización a elemento de lista */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+    margin: 0; /* Elimina los márgenes */
+}
+
+fieldset {
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina el relleno */
+}
+
+legend {
+    padding: 0; /* Elimina el relleno */
+}
+
+ol,
+ul,
+menu {
+    list-style: none; /* Elimina los estilos de viñeta */
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina el relleno */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+dialog {
+    padding: 0; /* Elimina el relleno */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+textarea {
+    resize: vertical; /* Restablece el redimensionamiento vertical */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1; /* Establece la opacidad del marcador de posición */
+    color: #9ca3af; /* Establece el color del marcador de posición */
+}
+
+/* Restablecimiento de Estilos Predeterminados */
+input::placeholder,
+textarea::placeholder {
+    opacity: 1; /* Establece la opacidad del marcador de posición */
+    color: #9ca3af; /* Establece el color del marcador de posición */
+}
+
+/* Estilos Específicos */
+button,
+[role="button"] {
+    cursor: pointer; /* Establece el cursor a una mano */
+}
+
+/* Estilos Específicos */
+:disabled {
+    cursor: default; /* Establece el cursor predeterminado para elementos deshabilitados */
+}
+
+/* Estilos Específicos */
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block; /* Establece la visualización como bloque */
+    vertical-align: middle; /* Alinea verticalmente con el centro */
+}
+
+/* Estilos Específicos */
+img,
+video {
+    max-width: 100%; /* Establece el ancho máximo al 100% */
+    height: auto; /* Establece la altura automática */
+}
+
+/* Estilos Específicos */
+[hidden] {
+    display: none; /* Oculta elementos con el atributo 'hidden' */
+}
+
+/* Variables CSS personalizadas para TailwindCSS */
+*,
+::before,
+::after {
+    /* Define variables CSS personalizadas para varias propiedades */
+}
+
+::backdrop {
+    /* Define variables CSS personalizadas para varias propiedades en el contexto de fondo */
+}
+
+/* Estilos de Texto */
+.text-center {
+    text-align: center; /* Centra el texto */
+}
+
+.text-3xl {
+    font-size: 1.875rem; /* Tamaño de fuente grande */
+    line-height: 2.25rem; /* Altura de línea grande */
+}
+/* Variables CSS personalizadas para TailwindCSS */
+*,
+::before,
+::after {
+    --tw-border-spacing-x: 0; /* Espaciado de borde horizontal */
+    --tw-border-spacing-y: 0; /* Espaciado de borde vertical */
+    --tw-translate-x: 0; /* Traducción horizontal */
+    --tw-translate-y: 0; /* Traducción vertical */
+    --tw-rotate: 0; /* Rotación */
+    --tw-skew-x: 0; /* Sesgo horizontal */
+    --tw-skew-y: 0; /* Sesgo vertical */
+    --tw-scale-x: 1; /* Escala horizontal */
+    --tw-scale-y: 1; /* Escala vertical */
+    --tw-pan-x: ; /* Desplazamiento horizontal */
+    --tw-pan-y: ; /* Desplazamiento vertical */
+    --tw-pinch-zoom: ; /* Zoom de pellizco */
+    --tw-scroll-snap-strictness: proximity; /* Rigidez de desplazamiento de acercamiento */
+    --tw-gradient-from-position: ; /* Posición de inicio del degradado */
+    --tw-gradient-via-position: ; /* Posición de paso intermedio del degradado */
+    --tw-gradient-to-position: ; /* Posición final del degradado */
+    --tw-ordinal: ; /* Establece un valor numérico */
+    --tw-slashed-zero: ; /* Controla el estilo de cero con barra */
+    --tw-numeric-figure: ; /* Controla la variante de dígitos */
+    --tw-numeric-spacing: ; /* Controla el espaciado de dígitos */
+    --tw-numeric-fraction: ; /* Controla el formato de fracción */
+    --tw-ring-inset: ; /* Controla si el anillo es interno */
+    --tw-ring-offset-width: 0px; /* Ancho de compensación del anillo */
+    --tw-ring-offset-color: #fff; /* Color de compensación del anillo */
+    --tw-ring-color: rgb(59 130 246 / 0.5); /* Color del anillo */
+    --tw-ring-offset-shadow: 0 0 #0000; /* Sombra de compensación del anillo */
+    --tw-ring-shadow: 0 0 #0000; /* Sombra del anillo */
+    --tw-shadow: 0 0 #0000; /* Sombra */
+    --tw-shadow-colored: 0 0 #0000; /* Sombra con color */
+    --tw-blur: ; /* Desenfoque */
+    --tw-brightness: ; /* Brillo */
+    --tw-contrast: ; /* Contraste */
+    --tw-grayscale: ; /* Escala de grises */
+    --tw-hue-rotate: ; /* Rotación de tono */
+    --tw-invert: ; /* Invertir */
+    --tw-saturate: ; /* Saturación */
+    --tw-sepia: ; /* Sepia */
+    --tw-drop-shadow: ; /* Sombra de caída */
+    --tw-backdrop-blur: ; /* Desenfoque de fondo */
+    --tw-backdrop-brightness: ; /* Brillo de fondo */
+    --tw-backdrop-contrast: ; /* Contraste de fondo */
+    --tw-backdrop-grayscale: ; /* Escala de grises de fondo */
+    --tw-backdrop-hue-rotate: ; /* Rotación de tono de fondo */
+    --tw-backdrop-invert: ; /* Invertir de fondo */
+    --tw-backdrop-opacity: ; /* Opacidad de fondo */
+    --tw-backdrop-saturate: ; /* Saturación de fondo */
+    --tw-backdrop-sepia: ; /* Sepia de fondo */
+}

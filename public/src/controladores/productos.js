@@ -1,16 +1,5 @@
+
 // queries.js
-function getmaquillaje(client, callback) {
-    client.query('SELECT * FROM maquillaje', (err, res) => {
-      if (err) {
-        console.error('Error executing query', err.stack);
-        callback(err);
-      } else {
-        callback(null, res.rows);
-      }
-    });
-  }
-  
-  // queries.js
 function createMaquillaje(client, maquillaje, callback) {
   const { nombre, descripcion, precio, stock } = maquillaje;
   const query = 'INSERT INTO maquillaje (nombre, descripcion, precio, stock) VALUES ($1, $2, $3, $4)';
@@ -66,18 +55,27 @@ function deleteMaquillaje(client, id, callback) {
   });
 }
 
+function getMaquillajeById(client, id, callback) {
+  const query = 'SELECT * FROM maquillaje WHERE id = $1';
+  const values = [id];
+
+  client.query(query, values, (err, res) => {
+    if (err) {
+      console.error('Error executing query', err.stack);
+      callback(err);
+    } else {
+      callback(null, res.rows[0]);
+    }
+  });
+}
+
 module.exports = {
   createMaquillaje,
   getMaquillaje,
   updateMaquillaje,
-  deleteMaquillaje
+  deleteMaquillaje,
+  getMaquillajeById
 };
 
 
 
-
-  module.exports = {
-    getmaquillaje
-  };
-
-  

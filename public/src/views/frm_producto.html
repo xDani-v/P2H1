@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+<body class="bg-gray-100 p-4">
+    <!-- Modal -->
+    <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="myModal">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <button onclick="closeModal()"
+                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                cerrar
+                            </button>
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">Añadir Producto
+                                de Maquillaje</h3>
+                            <div class="mt-2">
+                                <form id="product-form">
+
+                                    <div class="mb-4">
+                                        <label for="nombre"
+                                            class="block text-sm font-medium text-gray-700">Nombre</label>
+                                        <input type="text" name="nombre" id="nombre"
+                                            class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="descripcion"
+                                            class="block text-sm font-medium text-gray-700">Descripción</label>
+                                        <textarea name="descripcion" id="descripcion" rows="3"
+                                            class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="precio"
+                                            class="block text-sm font-medium text-gray-700">Precio</label>
+                                        <input type="number" name="precio" id="precio"
+                                            class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="stock" class="block text-sm font-medium text-gray-700">Stock</label>
+                                        <input type="number" name="stock" id="stock"
+                                            class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-400 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    </div>
+                                    <div class="mt-6">
+                                        <button type="submit" id="myButton"
+                                            class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón para abrir el modal -->
+    <div class="text-right mb-4">
+        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+            onclick="toggleModal()">Añadir Producto</button>
+    </div>
+
+    <!-- Tabla para mostrar los datos -->
+    <div class="bg-white shadow-md rounded my-6">
+        <table class="w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th class="py-3 px-6 text-left">Nombre</th>
+                    <th class="py-3 px-6 text-left">Descripción</th>
+                    <th class="py-3 px-6 text-center">Precio</th>
+                    <th class="py-3 px-6 text-center">Stock</th>
+                    <th class="py-3 px-6 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="product-table" class="text-gray-600 text-sm font-light">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let identificador = -1;
+
+
+        products = [];
+        function updateTable() {
+            fetch('/maquillaje')
+                .then(response => response.json())
+                .then(products => {
+                    const table = document.getElementById('product-table');
+                    // Primero, limpia la tabla
+                    table.innerHTML = '';
+                    // Luego, llena la tabla con los nuevos datos
+                    products.forEach(product => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+            <td class="py-3 px-6 text-left whitespace-nowrap">${product.nombre}</td>
+            <td class="py-3 px-6 text-left">${product.descripcion}</td>
+            <td class="py-3 px-6 text-center">${product.precio}</td>
+            <td class="py-3 px-6 text-center">${product.stock}</td>
+            <td class="py-3 px-6 text-center">
+                <button onclick="cargarDatos(${product.id})" class="modify-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-id="${product.id}">Modificar</button>
+                <button onclick="deleteProduct(${product.id})" class="delete-button bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+            </td>
+          `;
+                        table.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        updateTable();
+
+        function updateProduct(identificador) {
+            console.log(identificador);
+            document.getElementById('product-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                fetch(`/maquillaje/${identificador}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nombre: document.getElementById('nombre').value,
+                        descripcion: document.getElementById('descripcion').value,
+                        precio: document.getElementById('precio').value,
+                        stock: document.getElementById('stock').value
+                    }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al actualizar producto');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        identificador = -1;
+                        closeModal();
+                        console.log('Producto actualizado:', data);
+                        updateTable();
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            });
+        }
+
+        function createProduct() {
+            identificador = -1;
+            document.getElementById('product-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const nombre = document.getElementById('nombre').value;
+                const descripcion = document.getElementById('descripcion').value;
+                const precio = document.getElementById('precio').value;
+                const stock = document.getElementById('stock').value;
+
+                fetch('/maquillaje', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nombre: nombre,
+                        descripcion: descripcion,
+                        precio: precio,
+                        stock: stock,
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        updateTable();
+                        closeModal();
+                        console.log('Producto creado:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            });
+        }
+
+        function handleProduct() {
+            if (identificador != -1) {
+                updateProduct(identificador);
+            } else {
+                createProduct();
+            }
+        }
+
+        // Luego puedes llamar a handleProduct en un evento, como un clic de botón
+        document.getElementById('myButton').addEventListener('click', handleProduct);
+
+
+
+
+        function toggleModal() {
+            console.log(identificador)
+            var modal = document.getElementById("myModal");
+            modal.classList.toggle("hidden");
+        }
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.classList.add("hidden");
+            document.getElementById('nombre').value = '';
+            document.getElementById('descripcion').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('stock').value = '';
+        }
+
+
+        // <!-- Script para eliminar -->
+
+        function deleteProduct(productId) {
+            // Hace una solicitud DELETE al servidor
+            fetch(`/maquillaje/${productId}`, {
+                method: 'DELETE',
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al eliminar producto');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Producto eliminado:', data);
+                    // Actualiza la tabla después de eliminar un producto
+                    updateTable();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+        // <!-- Cargar datos al modal     -->
+
+
+        function cargarDatos(productId) {
+            identificador = productId;
+            toggleModal();
+            fetch(`/maquillaje/${identificador}`)
+                .then(response => response.json())
+                .then(product => {
+                    document.getElementById('nombre').value = product.nombre;
+                    document.getElementById('descripcion').value = product.descripcion;
+                    document.getElementById('precio').value = product.precio;
+                    document.getElementById('stock').value = product.stock;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>
